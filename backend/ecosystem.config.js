@@ -2,7 +2,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 
 dotenv.config({
-  path: path.resolve(__dirname, '.env.deploy'),
+  path: path.resolve(__dirname, '../.env.deploy'),
 });
 
 const {
