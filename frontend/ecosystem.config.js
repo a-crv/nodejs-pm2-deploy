@@ -18,7 +18,9 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPOSITORY,
       path: DEPLOY_PATH,
-      'post-deploy': 'cd frontend && npm ci && npm fund && npm run build',
+      'pre-deploy-local': `scp -Cr .env.production ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/shared`,
+      'pre-deploy': `cp ${DEPLOY_PATH}/shared/.env.production ${DEPLOY_PATH}/current/frontend/.env.production`,
+      'post-deploy': 'cd frontend && pwd && npm ci && npm run build',
     },
   },
 };
